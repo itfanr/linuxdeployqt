@@ -47,11 +47,11 @@ int main(int argc, char **argv)
     QString firstArgument = QString::fromLocal8Bit(argv[1]);
 
     // print version statement
-    std::stringstream version;
-    version << "linuxdeployqt " << LINUXDEPLOYQT_VERSION
-            << " (commit " << LINUXDEPLOYQT_GIT_COMMIT << "), "
-            << "build " << BUILD_NUMBER << " built on " << BUILD_DATE;
-    qInfo().noquote() << QString::fromStdString(version.str());
+//    std::stringstream version;
+//    version << "linuxdeployqt " << LINUXDEPLOYQT_VERSION
+//            << " (commit " << LINUXDEPLOYQT_GIT_COMMIT << "), "
+//            << "build " << BUILD_NUMBER << " built on " << BUILD_DATE;
+//    qInfo().noquote() << QString::fromStdString(version.str());
 
     bool plugins = true;
     bool appimage = false;
@@ -191,18 +191,19 @@ int main(int argc, char **argv)
         qInfo() << "         This mode is unsupported and discouraged.";
         qInfo() << "         For more information, please see";
         qInfo() << "         https://github.com/probonopd/linuxdeployqt/issues/340";
-     } else {
-        // openSUSE Leap 15.0 uses glibc 2.26 and is used on OBS
-        if (strverscmp (glcv, "2.27") >= 0) {
-            qInfo() << "ERROR: The host system is too new.";
-            qInfo() << "Please run on a system with a glibc version no newer than what comes with the oldest";
-            qInfo() << "currently still-supported mainstream distribution (xenial), which is glibc 2.23.";
-            qInfo() << "This is so that the resulting bundle will work on most still-supported Linux distributions.";
-            qInfo() << "For more information, please see";
-            qInfo() << "https://github.com/probonopd/linuxdeployqt/issues/340";
-            return 1;
-        }
-    }
+     }
+//    else {
+//        // openSUSE Leap 15.0 uses glibc 2.26 and is used on OBS
+//        if (strverscmp (glcv, "2.27") >= 0) {
+//            qInfo() << "ERROR: The host system is too new.";
+//            qInfo() << "Please run on a system with a glibc version no newer than what comes with the oldest";
+//            qInfo() << "currently still-supported mainstream distribution (xenial), which is glibc 2.23.";
+//            qInfo() << "This is so that the resulting bundle will work on most still-supported Linux distributions.";
+//            qInfo() << "For more information, please see";
+//            qInfo() << "https://github.com/probonopd/linuxdeployqt/issues/340";
+//            return 1;
+//        }
+//    }
 
     if (argc < 2 || (firstArgument.startsWith("-"))) {
         qInfo() << "";
